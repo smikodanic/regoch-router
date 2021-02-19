@@ -1,6 +1,6 @@
 {
   "name": "regoch-router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "title": "Regoch Router",
   "description": "Fast router for NodeJS and Browser environment.",
   "author": "Sasa Mikodanic <smikodanic@gmail.com>",
