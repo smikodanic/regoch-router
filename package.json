@@ -1,0 +1,28 @@
+{
+  "name": "regoch-router",
+  "version": "1.0.0",
+  "title": "Regoch Router",
+  "description": "Fast router for NodeJS and Browser environment.",
+  "author": "Sasa Mikodanic <smikodanic@gmail.com>",
+  "homepage": "http://www.regoch.org/websocket-router",
+  "license": "AGPL-3.0",
+  "keywords": [
+    "router",
+    "routing",
+    "regular expression",
+    "browser",
+    "nodejs",
+    "regoch"
+  ],
+  "main": "./Router.js",
+  "scripts": {},
+  "dependencies": {},
+  "directories": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smikodanic/regoch-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/smikodanic/regoch-router/issues"
+  }
+}
