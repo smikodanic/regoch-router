@@ -76,7 +76,7 @@ class Router {
   /**
    * Define route, routeParsed and corresponding functions.
    * @param {string} route - /room/subscribe/:room_name
-   * @param {Function[]} funcs - route functions
+   * @param {Function[]} funcs - route functions, middlewares
    * @returns {Router}
    */
   def(route, ...funcs) {
@@ -93,19 +93,20 @@ class Router {
    * Redirect from one route to another route.
    * @param {string} fromRoute - new route
    * @param {string} toRoute - destination route (where to redirect)
+   * @param {Function} cb - callback function executed during redirection process, it's a route middleware appended to toRoute middlewares
    * @returns {Router}
    */
-  redirect(fromRoute, toRoute) {
+  redirect(fromRoute, toRoute, cb) {
     const toRouteDef = this.routeDefs.find(routeDef => routeDef.route === toRoute); // {route, routeParsed, funcs}
     const toFuncs = !!toRouteDef ? toRouteDef.funcs : [];
-    this.def(fromRoute, ...toFuncs); // assign destination functions to the new route
+    this.def(fromRoute, cb, ...toFuncs); // assign destination functions to the new route
     return this;
   }
 
 
   /**
    * Define special route <notfound>
-   * @param {Function[]} funcs - function which will be executed when route is not matched aginst URI
+   * @param {Function[]} funcs - middlewares which will be executed when route is not matched aginst URI
    * @returns {Router}
    */
   notfound(...funcs) {
@@ -117,7 +118,7 @@ class Router {
 
   /**
    * Define special route <do>
-   * @param {Function[]} funcs - function which will be executed on every request, e.g. every exe()
+   * @param {Function[]} funcs - middlewares which will be executed on every request, e.g. every exe()
    * @returns {Router}
    */
   do(...funcs) {
@@ -129,7 +130,7 @@ class Router {
 
 
   /**
-   * Execute the router functions.
+   * Find the matched route and execute its middlewares.
    * @returns {Promise<object>}
    */
   async exe() {

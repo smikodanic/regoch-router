@@ -1,6 +1,6 @@
 /**
  * Test it in the Nodejs environment.
- * For example open terminal and type: $ node examples/001router.js '{"uri":"/shop/register/john/23/true","body":{}}'
+ * For example open terminal and type: $ node examples/001node.js '{"uri":"/shop/register/john/23/true?x=24","body":{}}'
  */
 
 
